@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca4fe11ee8c42e26e68ac4714e07fe72",
+    "content-hash": "a0f186c4d0ac88f758b1c27950a7d7ee",
     "packages": [
         {
             "name": "brick/math",
@@ -655,6 +655,58 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "fakerino/fakerino",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Fakerino/Fakerino.git",
+                "reference": "ea183b3ab8b7953328a0d9d8069962b7185677b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Fakerino/Fakerino/zipball/ea183b3ab8b7953328a0d9d8069962b7185677b9",
+                "reference": "ea183b3ab8b7953328a0d9d8069962b7185677b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fakerino\\": "src/Fakerino/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Pietroluongo",
+                    "email": "nik.longstone@gmail.com",
+                    "homepage": "http://nicolapietroluongo.com"
+                }
+            ],
+            "description": "Fake data generator",
+            "homepage": "http://github.com/niklongstone/fakerino",
+            "keywords": [
+                "data",
+                "fake",
+                "faker",
+                "generator"
+            ],
+            "support": {
+                "issues": "https://github.com/Fakerino/Fakerino/issues",
+                "source": "https://github.com/Fakerino/Fakerino/tree/0.4.0"
+            },
+            "time": "2015-05-12T14:35:49+00:00"
         },
         {
             "name": "fruitcake/php-cors",

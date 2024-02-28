@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+use App\Models\Type;
+
 class ProjectController extends Controller
 {
     /**
@@ -30,7 +32,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -54,14 +58,14 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:100|unique:projects',
             'content' => 'required',
-            'cover_image' => 'image',
+            'cover_image' => 'image|nullulable',
         ],
         [
             'title.required' => 'Il titolo è obbligatorio',
             'title.max' => 'Il titolo non deve superare i 100 caratteri',
             'title.unique' => 'Questo titolo esiste già',
             'content.required' => 'Il contenuto è obbligatorio',
-            
+
         ]
         );
 
@@ -71,6 +75,9 @@ class ProjectController extends Controller
         $slug = Str::slug($new_project->title, '-');
         $new_project->slug = $slug;
         $new_project->cover_image = $form_data['cover_image'];
+
+        $new_project->type_id = $form_data['type_id'];
+
         $new_project->save();
 
         return redirect()->route('admin.projects.index', ['project' => $new_project->id]);
@@ -84,7 +91,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show', compact('project'));
+        $project = Project::find($project->id);
+
+        $types = Type::all();
+        return view('admin.projects.show', compact('project', 'types'));
     }
 
     /**
@@ -96,7 +106,10 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $project = Project::find($project->id);
-        return view('admin.projects.edit', compact('project'));
+
+        $types = Type::all();
+
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -116,6 +129,9 @@ class ProjectController extends Controller
         $project->content = $form_data['content'];
         $slug = Str::slug($project->title, '-');
         $project->slug = $slug;
+
+        $project->type_id = $form_data['type_id'];
+
         $project->update();
 
         return redirect()->route('admin.projects.show', ['project' => $project->id]);

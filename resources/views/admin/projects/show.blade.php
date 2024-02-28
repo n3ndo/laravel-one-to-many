@@ -12,6 +12,9 @@
                         <p>
                             {{ $project->content }}
                         </p>
+                        <p>
+                            {{ $project->type ? $project->type->name : 'senza tipo' }}
+                        </p>
                     </div>
                     <div class="card-footer">
                         <img src="{{ asset('/storage/' . $project->cover_image)}}" alt="">

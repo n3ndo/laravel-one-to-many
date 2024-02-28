@@ -14,33 +14,29 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
-                            <th>Type</th>
+                            <th>Nome</th>
                             <th>Slug</th>
-                            <th>Content</th>
                             <th>Tools</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($projects as $project)
+                        @foreach ($types as $type)
                             <tr>
-                                <td>{{ $project->id }}</td>
-                                <td>{{ $project->title }}</td>
-                                <td>{{ $project->type ? $project->type->name : 'senza tipo' }}</td>  
-                                <td>{{ $project->slug }}</td>
-                                <td>{{ $project->content }}</td>
+                                <td>{{ $type->id }}</td>
+                                <td>{{ $type->name }}</td>
+                                <td>{{ $type->slug }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}" class="btn btn-sm btn-primary me-1"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a href="{{ route('admin.types.show', ['type' => $type->id]) }}" class="btn btn-sm btn-primary me-1"><i class="fa-solid fa-magnifying-glass"></i></a>
 
-                                        <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}" class="btn btn-sm btn-warning me-1"><i class="fa-solid fa-pencil"></i></a>
+                                        {{-- <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}" class="btn btn-sm btn-warning me-1"><i class="fa-solid fa-pencil"></i></a> --}}
 
-                                        <form action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}" method="POST">
+                                        {{-- <form action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
 
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Vuoi eliminare questo record??')"><i class="fa-solid fa-trash"></i></button>
-                                        </form>
+                                        </form> --}}
                                     </div>
                                 </td>
                             </tr>

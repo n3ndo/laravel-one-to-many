@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2>Modifica In Progetto</h2>
+                <h2>Modifica Progetto</h2>
             </div>
         </div>
         <div class="row">
@@ -33,6 +33,14 @@
                 @error('content')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+
+                <label for="type_id" class="control-label">Seleziona Categoria</label>
+                <select name="type_id" id="type_id" class="form-select mb-2">
+                    <option value="">Seleziona una categoria</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" @selected($type->id == old('type_id', $project->type ? $project->type->id : ''))>{{ $type->name }}</option>
+                    @endforeach
+                </select>
 
                 <button type="submit" class="btn btn-sm btn-primary">Salva</button>
                 </form>

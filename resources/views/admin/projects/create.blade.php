@@ -18,8 +18,8 @@
                 @endif
                 <form action="{{ route('admin.projects.store')}}" method="POST" class="form-control my-4" enctype="multipart/form-data">
                     @csrf
-                    
-                    <label for="cover_image">Aggiungi un'immagine</label>
+
+                    <label for="cover_image">Aggiungi un immagine</label>
                     <input type="file" name="cover_image" id="cover_image" class="form-control" required @error('cover_image') is-invalid @enderror>
 
                 @error('cover_image')
@@ -33,6 +33,13 @@
                 @error('title')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+
+                    <label for="type_id" class="control-label">Seleziona Categoria</label>
+                    <select name="type_id" id="type_id" class="form-select mb-2">
+                        <option value="">Seleziona una categoria</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
 
                 <label for="content">Descrizione</label>
                 <textarea name="content" id="content" cols="100" rows="10" class="form-control" placeholder="Inserisci la descrizione del progetto"></textarea>
